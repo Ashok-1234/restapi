@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="102da7cf-5eba-450a-9d64-129a7648d97a" >
+		<http:listener-connection host="0.0.0.0" port="8084" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="f48a0a9b-32d1-47ed-ae82-2fa6ebaa7dfb" >
+		<http:request-connection host="mu.mulesoft-training.com" port="80" />
+	</http:request-config>
+	<flow name="githubFlow" doc:id="483dabb3-c3f7-4ed8-aeb5-a4f8021e5796" >
+		<http:listener doc:name="Listener" doc:id="0d8974b6-f2bf-4837-9d1b-280c1cc76183" config-ref="HTTP_Listener_config" path="/git"/>
+		<logger level="INFO" doc:name="Logger" doc:id="852f7e21-ec75-404c-82cc-1edd9b37c280" message="#[payload]"/>
+		<http:request method="GET" doc:name="Request" doc:id="8afada17-0a9a-415d-a070-311b2e744283" config-ref="HTTP_Request_configuration" path="/essentials/united/flights"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="e8a9943e-c331-4392-884f-8ad5c1c274a9" />
+	</flow>
+</mule>
