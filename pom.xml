@@ -31,6 +31,15 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<cloudHubDeployment>
+				<username>Jacky99</username>
+				<envuronment>Sandbox</envuronment>
+				<workers>1</workers>
+				<workerType>1</workerType>
+				<applicationName>restservice</applicationName>
+				<password>Ashok@1994</password>
+				<muleVesrion>4.1.4</muleVesrion>
+				</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
